@@ -1,0 +1,27 @@
+<html>
+	
+	<head>
+	
+		<script src="//cdn.bootcss.com/jquery/1.12.1/jquery.js"></script>
+	</head>
+	
+	<body>
+		<table>
+		<% for(var i = 0; i < data.length; i ++) { %>
+			<tr><td><%=data[i].username%></td><td><button data-id="<%=data[i]['_id']%>">删除</button></td></tr>
+		<% } %>
+		</table>
+		
+		<script>
+			$('button').click(function(e) {
+				var data_id = $(this).attr('data-id');
+				
+				$.get('./del?id=' + data_id, function(e) {
+					//alert('del success')
+					window.location.reload()
+				});
+			});
+		</script>
+	</body>
+
+</html>
